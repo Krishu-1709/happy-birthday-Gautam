@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎉 Krishna's Birthday Bash 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      font-family: 'Rubik Mono One', monospace;
+      color: white;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .pulse-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(-45deg, #ff0055, #8000ff, #00ffe5, #ffcc00);
+      background-size: 400% 400%;
+      animation: pulseBg 6s ease infinite;
+      z-index: -3;
+    }
+
+    @keyframes pulseBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      margin-top: 100px;
+      opacity: 0;
+      transform: scale(0.5);
+      animation: zoomIn 1.5s forwards ease-out 1.2s;
+      z-index: 2;
+      position: relative;
+    }
+
+    @keyframes zoomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 6px solid #00ffe5;
+      box-shadow: 0 0 40px #00ffe5, 0 0 60px #ff00c8;
+      object-fit: cover;
+      margin-bottom: 30px;
+      animation: pulseImg 2s infinite alternate;
+    }
+
+    @keyframes pulseImg {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00ffe5;
+      text-shadow: 0 0 15px #00ffe5, 0 0 30px #ff00c8;
+      margin-bottom: 20px;
+      animation: partyText 1.5s infinite alternate;
+    }
+
+    @keyframes partyText {
+      from { transform: rotate(-1deg); }
+      to { transform: rotate(1deg); }
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #fff;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #ddd;
+      margin-top: 40px;
+    }
+
+    .emojis {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatSpin 8s infinite ease-in-out;
+    }
+
+    @keyframes floatSpin {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .emoji:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .emoji:nth-child(2) { left: 20%; animation-delay: 1s; }
+    .emoji:nth-child(3) { left: 40%; animation-delay: 2s; }
+    .emoji:nth-child(4) { left: 60%; animation-delay: 3s; }
+    .emoji:nth-child(5) { left: 80%; animation-delay: 4s; }
+
+    canvas.confetti {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="pulse-bg"></div>
+  <canvas class="confetti" id="confetti-canvas"></canvas>
+
+  <audio autoplay loop>
+    <source src="Kala Chashma _ Baar Baar Dekho _ Sidharth M Katrina K _ Prem, Hardeep, Badshah, Kam, Neha, Indeep-yt.savetube.me.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+    <img src="https://i.postimg.cc/QMX5rV4v/511468129-18389945227191351-729811113866668100-n.jpg" alt="Krishna's Photo">
+    <h1>Happy Birthday Krishna 🎂</h1>
+    <p>Bhai, college ka most entertaining guy.</p>
+    <p>And bro, chemistry ki back clear karne ke liye congrats — ab party toh banti hai! 🍾🎉</p>
+    <footer>— From Baranwal to Gautam ✌️</footer>
+  </div>
+
+  <div class="emojis">
+    <div class="emoji">🎧</div>
+    <div class="emoji">🎉</div>
+    <div class="emoji">🍾</div>
+    <div class="emoji">🚀</div>
+    <div class="emoji">🕺</div>
+  </div>
+
+  <script>
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+    script.onload = () => {
+      const canvas = document.getElementById('confetti-canvas');
+      const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
+      setInterval(() => {
+        myConfetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+      }, 900);
+    };
+    document.body.appendChild(script);
+  </script>
+
+</body>
+</html>
